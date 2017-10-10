@@ -184,7 +184,12 @@ Page({
             util.showModel('信道消息', speak)
             console.log('收到说话消息：', speak)
         })
-
+        tunnel.on('people', people => {
+          const { total, enter, leave } = people;
+          console.log('收到的total',total);
+          console.log('收到的enter',enter);
+          console.log('收到的leave',leave);
+        })
         // 打开信道
         tunnel.open()
 

@@ -1,4 +1,6 @@
 {
-  "client": "./client",
-  "svr": "./server"
+	"client": "./client",
+	"svr": "./server",
+	"appid": "wx6b109ef3ccad5201",
+	"projectname": "quickStart"
 }

@@ -1,0 +1,32 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">超级抢答器</view>
+        <view class="page__desc">裁判员进入展示入口</view>
+        <view class="page__desc">抢答人员进入抢答入口</view>
+        
+    </view>
+    <view class="page__bd">
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <navigator url="../answer/answer" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="../../imageSource/admin.jpg" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">裁判</view>
+                        <view class="weui-media-box__desc">创建一个抢答空间</view>
+                    </view>
+                </navigator>
+                <navigator url="../begin/begin" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="../../imageSource/user.jpeg" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">抢答者</view>
+                        <view class="weui-media-box__desc">进入抢答空间</view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+    </view>
+</view>
