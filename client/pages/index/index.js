@@ -66,6 +66,7 @@ Page({
     doRequest: function () {
         util.showBusy('请求中...')
         var that = this
+        console.log('请求的地址', config.service.requestUrl);
         var options = {
             url: config.service.requestUrl,
             login: true,

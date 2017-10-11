@@ -1,15 +1,17 @@
 {
   "pages":[
     "pages/main/main",
+    "pages/index/index",
+    
     "pages/answer/answer",
     "pages/begin/begin",
-    "pages/index/index",
+    
     "pages/addCgi/addCgi"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#333",
-    "navigationBarTitleText": "超级抢答器",
+    "navigationBarBackgroundColor": "#4593D5",
+    "navigationBarTitleText": "图书扫描大师",
     "navigationBarTextStyle": "white"
   }
 }
