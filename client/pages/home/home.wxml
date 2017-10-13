@@ -1,0 +1,22 @@
+ <!-- <view class="header">
+	<view class="nav" bindtap="changeTab">
+		<view class="nav-wrapper">
+		<block wx:for="{{tabs.list}}">
+			<view class="tab current" data-type="{{item.type}}" data-index="{{index}}" wx:if="{{index / 1 == tabs.currentIndex / 1}}">{{item.text}}</view> 
+			<view class="tab" data-type="{{item.type}}" data-index="{{index}}" wx:else>{{item.text}}</view> 
+		</block>
+		</view>
+	</view>
+</view>  -->
+
+<view class="list basestyle">
+	<block wx:for="{{bookList}}">
+		<view class="item">
+			<!-- <navigator url="../detail/detail?id={{item.id}}"> -->
+				<image mode="aspectFill" src="{{item.image}}"></image>
+				<text>{{item.title}}</text>
+			<!-- </navigator> -->
+		</view>
+	</block>
+</view>
+

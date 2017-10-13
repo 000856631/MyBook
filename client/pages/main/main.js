@@ -23,7 +23,11 @@ Page({
           login: true,
           success(result) {
             
-            console.log('request success', result.data.data.title);
+            console.log('request success', result.data.data);
+            wx.setStorage({
+              key: result.data.data.isbn13,
+              data: result.data.data
+            })
             util.showModel('成功',result.data.data.title);
           },
           fail(error) {

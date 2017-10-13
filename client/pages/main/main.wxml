@@ -1,31 +1,32 @@
 <view class="page">
-    <view class="page__hd">
-        <view class="page__title">图书扫描大师</view>
-        <view class="page__desc">扫描图书背后的ISBN</view>
-        
-    </view>
-    <view class="page__bd">
-        <view class="weui-panel weui-panel_access">
-            <view class="weui-panel__bd">
-                <navigator url="../answer/answer" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="../../imageSource/admin.jpg" />
-                    </view>
-                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">我的图书</view>
-                        <view class="weui-media-box__desc">创建一个抢答空间</view>
-                    </view>
-                </navigator>
-                <view  class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" bindtap="runScanCode">
-                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-                        <image class="weui-media-box__thumb" src="../../imageSource/user.jpeg" />
-                    </view>
-                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">扫一扫</view>
-                        <view class="weui-media-box__desc">进入抢答空间</view>
-                    </view>
-                </view>
-            </view>
+  <view class="page__hd">
+    <view class="page__title">图书扫描大师</view>
+    <view class="page__desc">扫描图书背后的ISBN</view>
+    <view class="page__desc">即可以管理你的实体书</view>
+
+  </view>
+  <view class="page__bd">
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+        <navigator url="../home/home" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="../../imageSource/bookmark.jpg" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">我的书架</view>
+            <view class="weui-media-box__desc">扫描过的书籍，都会记录在这里</view>
+          </view>
+        </navigator>
+        <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" bindtap="runScanCode">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="../../imageSource/book.jpg" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">扫图书</view>
+            <view class="weui-media-box__desc">对准图书背后的ISBN码吧</view>
+          </view>
         </view>
+      </view>
     </view>
+  </view>
 </view>
