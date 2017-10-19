@@ -1,13 +1,12 @@
 {
-  "pages":[
-    "pages/main/main",
+  "pages": [
+        "pages/main/main",
+      "pages/detail/detail",
+
+
+    
     "pages/home/home",
-    "pages/index/index",
-    
-    "pages/answer/answer",
-    "pages/begin/begin",
-    
-    "pages/addCgi/addCgi"
+    "pages/index/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

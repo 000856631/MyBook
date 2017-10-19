@@ -88,3 +88,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.list basestyle
+{
+  background-color: #4593D5
+}

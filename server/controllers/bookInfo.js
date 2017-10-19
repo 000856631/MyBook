@@ -7,6 +7,7 @@ async function request( options) {
   data = request.data;
   return data;
 }
+//重新上传代码
 module.exports = async ctx => {
   // 获取上传之后的结果
   // 具体可以查看：

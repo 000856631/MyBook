@@ -12,10 +12,10 @@
 <view class="list basestyle">
 	<block wx:for="{{bookList}}">
 		<view class="item">
-			<!-- <navigator url="../detail/detail?id={{item.id}}"> -->
+			 <navigator url="../detail/detail?isbnID={{item.isbn13}}"> 
 				<image mode="aspectFill" src="{{item.image}}"></image>
 				<text>{{item.title}}</text>
-			<!-- </navigator> -->
+			 </navigator> 
 		</view>
 	</block>
 </view>
