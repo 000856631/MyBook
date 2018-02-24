@@ -19,6 +19,7 @@ router.get('/user', validationMiddleware, controllers.user)
 router.post('/upload', controllers.upload)
 
 // --- 请求request Demo --- //
+// router.get('/bookInfo', controllers.bookInfo)
 router.get('/bookInfo', controllers.bookInfo)
 // --- 信道服务接口 Demo --- //
 // GET  用来响应请求信道地址的
@@ -31,5 +32,6 @@ router.post('/tunnel', controllers.tunnel.post)
 router.get('/message', controllers.message.get)
 // POST 用来处理微信转发过来的客服消息
 router.post('/message', controllers.message.post)
-
+router.get('/demo', controllers.demo)
+router.get('/bookArray', controllers.bookArray)
 module.exports = router

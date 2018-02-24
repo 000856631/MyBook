@@ -1,10 +1,19 @@
-var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var config = require('../../config')
 var util = require('../../utils/util.js')
+
 Page({
+  // data: {
+  //   userInfo: {},
+  //   logged: false,
+  //   takeSession: false,
+  //   requestResult: ''
+  // },
   onLoad: function () {
+   
   },
-  
+  onReady: function () {
+ 
+  },
   runScanCode:function()
   {
     wx.scanCode({
@@ -15,10 +24,14 @@ Page({
         util.showBusy('请求中...')
         var that = this
         console.log('url地址：', config.service.bookInfoUrl);
+        var app = getApp();//取得全局App({..})实例
+        var userInfo = app.globalData.userInfo;//取得全局变量需要的值
+        console.log('获取的openId' + userInfo.openId);
         var options = {
           url: config.service.bookInfoUrl,
           data:{
-            isbnCode: isbnCode
+            isbnCode: isbnCode,
+            openId: userInfo.openId
           },
           login: true,
           success(result) {

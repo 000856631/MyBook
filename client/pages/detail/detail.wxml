@@ -1,36 +1,23 @@
-<view style="min-height : {{screen.minHeight}};background-color: #2f2f2f;">
+<view style="min-height : {{screen.minHeight}};background-color: #4593D5;">
   <view class="banner">
     <view class="poster">
-      <image mode="aspectFit" src="{{movie.images.large}}"></image>
+      <image mode="aspectFit" src="{{movie.bookLogoUrl}}"></image>
     </view>
     <view class="info">
       <!-- <view class="subinfo">{{movie.title}}</view> -->
       <view>{{movie.aka[movie.aka.length - 1]}}</view>
-      <view class="score">{{movie.author}}
+      <view class="score">{{movie.authorName}}
         <view></view>
       </view>
       <view class="subinfo">
         <view>{{movie.genresStr}}</view>
-        <view>{{movie.title}}</view>
+        <view>{{movie.bookName}}</view>
       </view>
     </view>
-    <image class="background" mode="aspectFill" src="{{movie.images.large}}"></image>
+    <image class="background" mode="aspectFill" src="{{movie.bookLogoUrl}}"></image>
   </view>
-
-  <view class="summary">
-    <view class="title">简介:</view>
-    {{movie.summary}}
-  </view>
-
   <view class="casts">
-    <view class="title">备注</view>
-    <scroll-view scroll-x>
-      <view class="casts-wrapper" style="width:{{movie.staff.length*183}}rpx;">
-        <view class="avatar" wx:for="{{movie.staff}}">
-          <image mode="aspectFill" src="{{item.avatars.large}}"></image>
-          <view>{{item.name}}</view>
-        </view>
-      </view>
-    </scroll-view>
+    <view class="title">书籍简介:</view>
+    {{movie.content}}
   </view>
 </view>

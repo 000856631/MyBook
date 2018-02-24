@@ -1,22 +1,23 @@
- <!-- <view class="header">
-	<view class="nav" bindtap="changeTab">
-		<view class="nav-wrapper">
-		<block wx:for="{{tabs.list}}">
-			<view class="tab current" data-type="{{item.type}}" data-index="{{index}}" wx:if="{{index / 1 == tabs.currentIndex / 1}}">{{item.text}}</view> 
-			<view class="tab" data-type="{{item.type}}" data-index="{{index}}" wx:else>{{item.text}}</view> 
-		</block>
-		</view>
-	</view>
-</view>  -->
+<!-- <view class="header">
 
-<view class="list basestyle">
-	<block wx:for="{{bookList}}">
+</view>   -->
+
+    <view class="toolbar">
+    <button class='weui-btn mini-btn' type='primary' size="mini" open-type='share'> 分享藏书</button> 
+    </view>
+
+ <view class="list basestyle">
+
+	 <block wx:for="{{bookList}}">
 		<view class="item">
-			 <navigator url="../detail/detail?isbnID={{item.isbn13}}"> 
-				<image mode="aspectFill" src="{{item.image}}"></image>
-				<text>{{item.title}}</text>
+			 <navigator url="../detail/detail?isbnID={{item.isbnNum}}"> 
+				<image mode="aspectFill" src="{{item.bookLogoUrl}}"></image>
+				<text>{{item.bookName}}</text>
 			 </navigator> 
 		</view>
-	</block>
+	</block> 
 </view>
+    
+
+
 

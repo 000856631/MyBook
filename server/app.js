@@ -1,3 +1,4 @@
+//重启服务器需要
 const Koa = require('koa')
 const app = new Koa()
 const debug = require('debug')('koa-weapp-demo')

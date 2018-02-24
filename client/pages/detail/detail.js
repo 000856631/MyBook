@@ -4,7 +4,7 @@ var _fn
 Page( {
   data : {
     movie : {},
-    isbnID: '9787121261176',
+    isbnID: '',
     screen : {
       minHeight : 'auto'
     }
@@ -25,6 +25,7 @@ Page( {
       var value = wx.getStorageSync(query.isbnID)
       if (value) {
         // Do something with return value
+        console.log('查询的isbnID' + query.isbnID);
         self.setData({
           'movie': value
         });

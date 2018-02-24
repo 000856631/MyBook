@@ -1,5 +1,10 @@
-var utils = require('../../utils/util.js')
-var _fn
+var utils = require('../../utils/util.js');
+var config = require('../../config');
+var _fn;
+const toolbar = [
+  '../../imageSource/nav/download.png', '../../imageSource/nav/fav.png',
+  '../../imageSource/nav/share.png', '../../imageSource/nav/comment.png',
+];
 
 Page({
   data: {
@@ -16,18 +21,42 @@ Page({
       }]
     }
   },
+  onLoad:function(res){
+    console.log('res.openId' + res.openId);
+    if (res.openId !=undefined)
+    {
+      _fn.fillDataFromShare.call(this, res.openId);
+    }else
+    {
+      _fn.fillDataFromNet.call(this);
+    }
+
+    
+  },
   onReady: function () {
-    // 进入便选择第一项
-    _fn.fillData.call(this);
   },
   changeTab: function (e) {
     var target = e.target;
     // 选中不同项
     _fn.selectTab.call(this, target.dataset.index);
+  },
+  shareToOthers:function()
+  {
+
+  },
+  onShareAppMessage:function(){
+    var app = getApp();//取得全局App({..})实例
+    var userInfo = app.globalData.userInfo;//取得全局变量需要的值
+    return {
+      title: '快看看我的藏书吧',
+      desc: '扫描大师助你管理线下图书',
+      path: 'pages/home/home?openId=' + userInfo.openId
+    }
   }
 });
 
 _fn = {
+
   selectTab: function (index) {
     var self = this,
       tabs = self.data.tabs;
@@ -68,6 +97,78 @@ _fn = {
       }
     });
 
+  },
+  fillDataFromNet: function () {
+    var self = this;
+    var app = getApp();//取得全局App({..})实例
+    var userInfo = app.globalData.userInfo;//取得全局变量需要的值
+    var list = new Array();
+    // console.log('homePage:'+userInfo.openId);
+    var options = {
+      url: config.service.bookArray,
+      data: {
+        openId: userInfo.openId
+      },
+      login: true,
+      success(result) {
+
+        console.log('request success', result.data.data);
+        list = result.data.data.bookArray;
+        // util.showModel('成功', result.data.data.title);
+        for(var item in list){
+          console.log('item Value',list[item]);
+          wx.setStorage({
+            key: list[item].isbnNum,
+            data: list[item]
+          });
+        }
+        
+        
+        self.setData({
+          bookList: list
+        });
+      },
+      fail(error) {
+        util.showModel('请求失败', error);
+        console.log('request fail', error);
+      }
+    }
+
+    wx.request(options)
+  },
+  fillDataFromShare: function (shareOpenId) {
+    var self = this;
+    var list = new Array();
+    // console.log('homePage:'+userInfo.openId);
+    var options = {
+      url: config.service.bookArray,
+      data: {
+        openId: shareOpenId
+      },
+      login: true,
+      success(result) {
+
+        console.log('request success', result.data.data);
+        list = result.data.data.bookArray;
+        // util.showModel('成功', result.data.data.title);
+        for (var item in list) {
+          console.log('item Value', list[item]);
+          wx.setStorage({
+            key: list[item].isbnNum,
+            data: list[item]
+          });
+        }
+        self.setData({
+          bookList: list
+        });
+      },
+      fail(error) {
+        util.showModel('请求失败', error);
+        console.log('request fail', error);
+      }
+    }
+
+    wx.request(options)
   },
   renderList: function (data) {
     data = data || listData;

@@ -22,7 +22,10 @@ var config = {
 
         // 上传图片接口
         uploadUrl: `${host}/weapp/upload`,
-        bookInfoUrl: `${host}/weapp/bookInfo`
+        //解析单个图书信息的接口
+        bookInfoUrl: `${host}/weapp/bookInfo`,
+        //获取图书列表的接口
+        bookArray: `${host}/weapp/bookArray`
     }
 };
 
