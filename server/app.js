@@ -16,27 +16,5 @@ app.use(bodyParser())
 const router = require('./routes')
 app.use(router.routes())
 
-// app.use(function* (next) {
-//   var start = new Date;
-//   yield next;
-//   var ms = new Date - start;
-//   this.set('X-Response-Time', ms + 'ms');
-// });
-
-// // logger
-
-// app.use(function* (next) {
-//   var start = new Date;
-//   yield next;
-//   var ms = new Date - start;
-//   console.log('Hello MyLog %s %s - %s', this.method, this.url, ms);
-// });
-
-// // response
-
-// app.use(function* () {
-//   this.body = 'Hello World';
-// });
-
 // 启动程序，监听端口
 app.listen(config.port, () => debug(`listening on port ${config.port}`))

@@ -1,3 +1,9 @@
+    <view class="toolbar2">
+     <image class="item" mode='aspectFill' src='../../imageSource/bookMaster/闹钟.png ' ></image>  
+    </view>
+        <view class="toolbar">
+     <button class='item' open-type='share'>    </button>  
+    </view>
 <view style="min-height : {{screen.minHeight}};background-color: #4593D5;">
   <view class="banner">
     <view class="poster">

@@ -155,6 +155,16 @@ mysql('testBook').select('*').where({ nickName: Samel }) // => { id:1, name: 'le
 是的话就直接发推送咯。
 然后试试推送的玩法
 后续加入附近图书馆的功能吧。
+一个图片按钮，居然卡了我很久
+通过盖了一层隐藏的按钮，来解决这个问题，后续看看有没有更好的办法。
 
+貌似微信token这里，已经预先定义好了一个变量，但是🈶️没有去使用。
+后续看看能不能找微信支持的人问下了
 
+https://www.jianshu.com/p/17138713d601
+这里能查看会话服务器配置的secret和appID
+
+先用野蛮写法吧，把通知搞掂先。
+关于nodejs urllib的用法：
+https://www.npmjs.com/package/urllib
 

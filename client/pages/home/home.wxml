@@ -2,10 +2,14 @@
 
 </view>   -->
 
-    <view class="toolbar">
-    <button class='weui-btn mini-btn' type='primary' size="mini" open-type='share'> 分享藏书</button> 
-    </view>
 
+
+    <view class="toolbar2">
+     <image class="item" mode='aspectFill' src='../../imageSource/bookMaster/分享.png ' ></image>  
+    </view>
+    <view class="toolbar">
+     <button class='item' open-type='share'>    </button>  
+    </view>
  <view class="list basestyle">
 
 	 <block wx:for="{{bookList}}">

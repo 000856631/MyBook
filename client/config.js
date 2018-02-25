@@ -25,7 +25,9 @@ var config = {
         //解析单个图书信息的接口
         bookInfoUrl: `${host}/weapp/bookInfo`,
         //获取图书列表的接口
-        bookArray: `${host}/weapp/bookArray`
+        bookArray: `${host}/weapp/bookArray`,
+        //设定提醒接口接口
+        noticeUser: `${host}/weapp/noticeUser`
     }
 };
 
