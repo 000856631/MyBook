@@ -27,7 +27,7 @@ var config = {
         //获取图书列表的接口
         bookArray: `${host}/weapp/bookArray`,
         //设定提醒接口接口
-        noticeUser: `${host}/weapp/noticeUser`
+        noticeUser: `${host}/weapp/markNotice`
     }
 };
 

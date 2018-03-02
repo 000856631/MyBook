@@ -34,5 +34,5 @@ router.get('/message', controllers.message.get)
 router.post('/message', controllers.message.post)
 router.get('/demo', controllers.demo)
 router.get('/bookArray', controllers.bookArray)
-router.get('/noticeUser', controllers.noticeUser)
+router.get('/markNotice', controllers.markNotice)
 module.exports = router

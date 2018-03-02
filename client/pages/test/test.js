@@ -14,13 +14,14 @@ Page({
     var app = getApp();//取得全局App({..})实例
     var userInfo = app.globalData.userInfo;//取得全局变量需要的值
     var list = new Array();
-    // console.log('homePage:'+userInfo.openId);
+    console.log('homePage:'+userInfo.openId);
     console.log("请求的url" + config.service.noticeUser);
     var options = {
       url: config.service.noticeUser,
       data: {
         openId: userInfo.openId,
-        form_id: e.detail.formId
+        form_id: e.detail.formId,
+        bookName:'白夜行'
       },
       login: true,
       success(result) {
