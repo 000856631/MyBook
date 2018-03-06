@@ -6,7 +6,7 @@ const response = require('./middlewares/response')
 const bodyParser = require('koa-bodyparser')
 const config = require('./config')
 const later = require('./my_modules/later');
-// const noticeCenter = require('./batchHandle/noticeCenter.js');
+const noticeCenter = require('./batchHandle/noticeCenter');
 //使用响应处理中间件
 app.use(response)
 
@@ -22,15 +22,15 @@ app.listen(config.port, () => debug(`listening on port ${config.port}`))
 
 //定时跑批量
 console.log('开始跑批量调度了');
-// var center = new noticeCenter();
-// center.noticeUser();
-// var composite = [
-//   { h: [19], m: [50] }
-// ];
-// var sched = {
-//   schedules:composite
-// };
-// later.date.localTime();
-// var t = later.setInterval(function () {
-//   console.log("发送消息咯" + later.date.localTime());
-// }, sched);
+
+var composite = [
+  { h: [20], m: [30] }
+];
+var sched = {
+  schedules:composite
+};
+later.date.localTime();
+var t = later.setInterval(function () {
+  console.log("发送消息咯" + later.date.localTime());
+  noticeCenter.noticeUser();
+}, sched);

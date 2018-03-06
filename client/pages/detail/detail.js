@@ -1,4 +1,5 @@
 var utils = require('../../utils/util.js')
+const config = require('../../config.js')
 var _fn
 
 Page( {
@@ -8,6 +9,48 @@ Page( {
     screen : {
       minHeight : 'auto'
     }
+  },
+  formSubmit: function (e) {
+    var self = this;
+    wx.showModal({
+      title: '读书提醒',
+      content: '是否在今天20:30分提醒我看此书？（PS:过了今天20:30会在隔天提醒，重复设置会提醒多次）',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('form发生了submit事件，携带数据为：', e.detail.formId);
+          
+          var app = getApp();//取得全局App({..})实例
+          var userInfo = app.globalData.userInfo;//取得全局变量需要的值
+          var list = new Array();
+          console.log('homePage:' + userInfo.openId);
+          console.log("请求的url" + config.service.noticeUser);
+          console.log("当前page的move数据" + self.data.movie);
+          var options = {
+            url: config.service.noticeUser,
+            data: {
+              openId: userInfo.openId,
+              form_id: e.detail.formId,
+              bookName: self.data.movie.bookName
+            },
+            login: true,
+            success(result) {
+
+              console.log('获取token request success', result);
+            },
+            fail(error) {
+              util.showModel('请求失败', error);
+              console.log('request fail', error);
+            }
+          }
+
+          wx.request(options)
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+
   },
   onLoad : function( query ) {
     var self = this;
@@ -29,7 +72,7 @@ Page( {
         self.setData({
           'movie': value
         });
-        console.log('获取的缓存数据', value);
+        console.log('获取的缓存数据', self.data.movie);
       }
     } catch (e) {
       // Do something when catch error

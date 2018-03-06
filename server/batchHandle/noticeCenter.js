@@ -9,9 +9,8 @@ async function request(options) {
   data = request.data;
   return data;
 }
-var noticeCenter =  function()
-{
 
+async function noticeUser() {
   var appSecret = config.appSecret;
   var appId = config.appId;
   var options = {
@@ -19,13 +18,13 @@ var noticeCenter =  function()
     headers: { 'User-Agent': 'request' }
   };
   var response = await request(options);
-  console.log('获取token:' + response);
+  console.log('获取token:' + response.access_token);
   var access_token = response.access_token;
   var noticeUrl = 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=' + access_token;
 
   var data = await mysql('noticeList').select('*').where({ status: 0 });
-  this.noticeUser = async function () {
-    mysql('noticeList').where({ status: 0 }).update({ status: 1 });
+    console.log('能执行我自定义的方法noticeUser');
+    await mysql('noticeList').update({ status: 1 }).where({ status: 0 });
     for (j = 0; j < data.length; j++) {
       var openId = data[j].openid;
       var form_id = data[j].formid;
@@ -61,6 +60,4 @@ var noticeCenter =  function()
     }
 
   }
-
-}
-module.exports = noticeCenter;
+module.exports.noticeUser = noticeUser;

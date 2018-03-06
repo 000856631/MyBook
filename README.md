@@ -186,3 +186,44 @@ https://segmentfault.com/a/1190000006206193
 还有update的流程忘记写了
 
 记得提交git,晚上解决三个问题。工作的时候写项目
+哈哈，就差最后一步update表的状态了
+
+https://juejin.im/post/59cb487ef265da065075409f 
+const { mysql } = require('../qcloud')
+const uuid = require('node-uuid')
+module.exports = async ctx => 
+{  
+var id = uuid.v1()  // 增 
+ var book = {    
+id: id,    
+name: "冰与火之歌",  
+  price: 88  
+}  
+   await mysql("Book").insert(book)  
+ // 查  var res = await mysql("Book").where({ id }).first() 
+ // 改  await mysql("Book").update({ price: 66 }).where({ id }) 
+ // 删  await mysql("Book").del().where({ id }) 
+ ctx.state.data = "OK"}
+
+数据库操作都是异步的，前面需要加入await才能调起使用。
+update的问题也已经解决。
+
+this总是指向词法作用域，也就是外层调用者obj
+所以在  formSubmit: function (e) {
+    var self = this;把this提前之后就能正确引用 self.data.movie
+箭头函数的用法：https://www.cnblogs.com/hailun/p/6279029.html
+
+
+function (x) {
+    return x * x;
+}
+
+module.exports = async ctx => {
+
+}
+等价于
+async function noticeUser()
+{
+
+}
+module.exports = noticeUser;
