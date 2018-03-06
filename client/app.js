@@ -24,30 +24,27 @@ App({
       // 调用登录接口
       qcloud.login({
         success(result) {
-          if (result) {
-            util.showSuccess('登录成功')
-            console.log(result);
-            that.globalData.userInfo = result.data.data;
-            // console.log('that.globalData.userInfo1' + that.globalData.userInfo.openId);
-            // userInfo = result;
-            // that.setData({
-            //   userInfo: result,
-            //   logged: true
-            // })
-          } else {
+          // if (result) {
+          //   util.showSuccess('登录成功')
+          //   console.log('调第一个方法' + result.data.data);
+          //   that.globalData.userInfo = result.data.data;
+          //   wx.setStorage({
+          //     key: 'LocalUserInfo',
+          //     data: result.data.data
+          //   });
+          // } else {
             // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
             qcloud.request({
               url: config.service.requestUrl,
               login: true,
               success(result) {
                 util.showSuccess('登录成功')
-                console.log(result.data.data);
+                console.log('调第二个方法'+result.data.data);
                 that.globalData.userInfo = result.data.data;
-                // console.log('that.globalData.userInfo2' + that.globalData.userInfo.openId);
-                // that.set({
-                //   userInfo: result.data.data,
-                //   logged: true
-                // })
+                wx.setStorage({
+                  key: 'LocalUserInfo',
+                  data: result.data.data
+                });
               },
 
               fail(error) {
@@ -55,7 +52,7 @@ App({
                 console.log('request fail', error)
               }
             })
-          }
+          // }
         },
 
         fail(error) {

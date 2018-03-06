@@ -32,7 +32,7 @@ async function noticeUser() {
       var data = {
         touser: openId,
         template_id: 'GqWlQenk7T26mDNVxhCz9pX2N8skbtTPqVAQy6i8bFY',
-        page: 'main',
+        page: 'pages/main/main',
         form_id: form_id,
         "data": {
           "keyword1": {

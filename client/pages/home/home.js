@@ -102,12 +102,26 @@ _fn = {
     var self = this;
     var app = getApp();//取得全局App({..})实例
     var userInfo = app.globalData.userInfo;//取得全局变量需要的值
+    var localUserInfo = wx.getStorageSync('LocalUserInfo');
     var list = new Array();
-    // console.log('homePage:'+userInfo.openId);
+    console.log('homePage 获取的openID:'+userInfo.openId);
+    console.log('homePage 获取的Local openID:' + localUserInfo.openId);
+    var servieceUserInfo;
+    if (userInfo.openId === undefined)
+    {
+      servieceUserInfo = localUserInfo.openId;
+    }else
+    {
+      servieceUserInfo = userInfo.openId;
+    }
+    if (servieceUserInfo === undefined)
+    {
+      util.showSuccess('获取用户openId失败，请稍后尝试');
+    }
     var options = {
       url: config.service.bookArray,
       data: {
-        openId: userInfo.openId
+        openId: servieceUserInfo
       },
       login: true,
       success(result) {

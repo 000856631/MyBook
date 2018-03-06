@@ -2,12 +2,12 @@ var config = require('../../config')
 var util = require('../../utils/util.js')
 
 Page({
-  // data: {
-  //   userInfo: {},
-  //   logged: false,
-  //   takeSession: false,
-  //   requestResult: ''
-  // },
+  data: {
+    userInfo: {},
+    logged: false,
+    takeSession: false,
+    requestResult: ''
+  },
   onLoad: function () {
    
   },
