@@ -1,5 +1,7 @@
 # bookScan
 第二个小程序
+基于water2的总流程
+https://www.ifanr.com/minapp/915777
 实现图书扫描录入的功能
 当前完成客户端与服务的基本框架的熟悉与搭建。
 了解KOA框架，同心圆周期的原则。
@@ -229,8 +231,218 @@ async function noticeUser()
 module.exports = noticeUser;
 
 接下来还需要搞懂js的几种异步模式
+Javascript 语言的执行环境是“ 单线程” 的
+http://blog.csdn.net/qq_30100043/article/details/53508080
+http://www.ruanyifeng.com/blog/2015/05/async.html
+http://www.ruanyifeng.com/blog/2015/04/generator.html
+Promise 就是为了解决这个问题而提出的。 它不是新的语法功能， 而是一种新的写法， 允许将回调函数的嵌套， 改成链式调用。 采用 Promise， 连续读取多个文件， 写法如下。
+当初链式调用，原来就是这个特性。
+
+
+异步的几种方式：
+1、回调函数
+
+JavaScript 语言对异步编程的实现， 就是回调函数。 所谓回调函数， 就是把任务的第二段单独写在一个函数里面， 等到重新执行这个任务的时候， 就直接调用这个函数。 它的英语名字 callback， 直译过来就是 " 重新调用 "。
+读取文件进行处理， 是这样写的。
+    fs.readFile('/etc/passwd', function(err, data) {  
+        if(err) throw err;  
+        console.log(data);  
+    });  
+2、Promise 解决传统回调 从横向发展到纵向发展的问题：
+传统的回调函数写法使得代码混成一团，变得横向发展而不是向下发展
+代码事例===
+function ajax(URL) {
+	return new Promise(function (resolve, reject) {
+		var req = new XMLHttpRequest(); 
+		req.open('GET', URL, true);
+		req.onload = function () {
+		if (req.status === 200) { 
+				resolve(req.responseText);
+			} else {
+				reject(new Error(req.statusText));
+			} 
+		};
+		req.onerror = function () {
+			reject(new Error(req.statusText));
+		};
+		req.send(); 
+	});
+}
+var URL = "/try/ajax/testpromise.php"; 
+ajax(URL).then(function onFulfilled(value){
+	document.write('成功内容是：' + value); 
+}).catch(function onRejected(error){
+	document.write('错误：' + error); 
+});
+3、Generator
+4、async函数
+
+
+
+搞定那三题
+1、平衡二叉树。
+2、数据归并。
+3、链式调用。
+
+
 以及js 的模块化编程
 下一步：统计下推送清单表，看看推送列表里拿不到用户openId的多不多，多的话再想想应该把openID缓存起来的做法。
 做成通用方法，启动的时候去登录拿，拿不到的话再去缓存拿，最终还是拿不到提示用户无法获取openId，请重新打开。
 登录每次拿到之后都更新本地缓存的openID
 改为放在缓冲吧，否则经常拿不到。
+经常拿不到是修改了main的那个方法，第一种方式，没有经过request的，是拿不到的。
+
+现在经常收不到通知，但是单个却有可以。怀疑是循环没有做好，每次只调用了一次。
+测试下，一会弄两台手机同时试试。
+
+理解下js的数据结构，以及一些异步的特性。
+Firefox  alt+command+s 打开调试器，可以直接运行js的代码
+Firefox  fn+shirt+f4 直接打开代码草稿纸，也可以运行js的代码
+
+腾讯云居然把我的用户数据和表结构都删除了，真是MMB的
+看来以后建表要自己写好脚本保存起来才行。然后定期保存下数据
+然后尽快切换生产服务器搭建好来吧。
+如下表：
+bookInfo
+-openid
+-isbnNum
+-nickName
+-headImageUrl
+-bookLogoUrl
+-bookName
+-authorName
+-content
+
+noticeList
+-openid
+-bookName
+- 
+
+bookOwnerRalation
+书和人本来是多对多的关系，根据范式设计应该拆分为三张表。
+一个和人有关、一个和书籍有关、一个记录关系。
+但是这里是小程序，可以追求反范式设计，变为一个人对应多本书籍。这样的话书籍的字段就会有冗余的记录。
+这样我的SQL处理会快一点，用空间换时间。（还有写代码偷懒的时间。）
+下次把正式环境投上去就完美了
+
+接下来的步骤，备案域名，搭建好我生产的服务器，提供稳定的服务。
+后续加入 没了
+继续咯
+
+数组尾部添加 push
+尾部删除 pop
+头部添加 unshift
+头部删除 shift
+闭包的案例
+坑的写法：
+function createFunctions(){
+  var result = new Array();
+  for (var i=0; i < 10; i++){
+    result[i] = function(){
+      return i;
+    };
+  }
+  return result;
+}
+var funcs = createFunctions();
+for (var i=0; i < funcs.length; i++){
+  console.log(funcs[i]());
+}
+闭包技术的匿名函数，能让函数立即执行，从而返回正确的结果。
+正确写法：
+function createFunctions(){
+  var result = new Array();
+  for (var i=0; i < 10; i++){
+    result[i] = (function(i){
+      return function(){
+         return i;
+      };
+    })(i);
+  }
+  return result;
+}
+var funcs = createFunctions();
+for (var i=0; i < funcs.length; i++){
+  console.log(funcs[i]());
+}
+
+柯里化，有点意思：
+function curryIt(fn) {
+        var length = fn.length,
+        args = [];
+    var result =  function (arg){
+        args.push(arg);
+        length --;
+        console.log(length);
+        if(length <= 0 ){
+            return fn.apply(this, args);
+        } else {
+            return result;
+        }
+    }
+     
+    return result;
+}
+
+
+//延迟这个函数，只是记录变量而已，通过判断变量是否存在，决定是否延迟执行。
+//每一个函数，其实都不执行，都只是记录变量的值而已。
+//为啥要另外定义一个obj,因为需要这个公共类直接就能生成一个实例化对象。 后来发现其实也不需要，例如你看我就直接返回this
+//这道题的关键是 setTimeout(this.settime); 通过这句，形成一个异步处理，先把调用方法的变量给赋值完
+//然后这个异步根据变量的值来决定走什么分支，所以以后对于那种顺序动态变化的，需找到执行切入点。
+function Hard(str){
+    this.str = "I am " + str;
+    var that = this;
+    this.restFirst = function ( n ) {
+    this._restFirst = n;
+    this._rest = 0;
+    return this;
+}
+this.rest = function( num ){
+    this._rest = num;
+    return this;
+}
+this.yanchi = function(m){
+    console.log("sleep")
+    var d = new Date();
+    var n = this._restFirst*1000;
+    while(true){
+        if( new Date() - d > n ){
+            console.log("sleep end")
+            return false;
+        }
+    }
+}
+this.learn = function( sr ) {
+    this._learn = sr;
+    return this;
+}
+    this.settime = function(){
+    var { str, _learn, _rest, _restFirst} = that;
+    var num = _rest || _restFirst;
+
+    
+
+    if( _restFirst !== undefined ){
+        that.yanchi();
+    }else{
+        console.log(str);
+    }
+
+    if(num){
+        setTimeout(function(){
+            console.log( `Start learning after ${ num } seconds` );
+            if( _restFirst !== undefined ){
+                console.log(str);
+            }
+            if( _learn ){
+                console.log( "Learning " + _learn )
+            }
+        },_rest*1000)
+    }
+     }
+    setTimeout(this.settime);
+    return this;
+}
+// Hard('jack1').rest(3).learn('chinese2');
+Hard('jack1').restFirst(5).learn('chinese');

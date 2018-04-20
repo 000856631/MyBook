@@ -24,7 +24,7 @@ async function noticeUser() {
 
   var data = await mysql('noticeList').select('*').where({ status: 0 });
     console.log('能执行我自定义的方法noticeUser');
-    await mysql('noticeList').update({ status: 1 }).where({ status: 0 });
+    
     for (j = 0; j < data.length; j++) {
       var openId = data[j].openid;
       var form_id = data[j].formid;
@@ -56,8 +56,10 @@ async function noticeUser() {
         data: data
 
       };
-      request(noticeOptions);
+      //这里改成同步的，可能request的线程池只能一个？ 先试试这么改
+      await request(noticeOptions);
     }
+    await mysql('noticeList').update({ status: 1 }).where({ status: 0 });
 
   }
 module.exports.noticeUser = noticeUser;

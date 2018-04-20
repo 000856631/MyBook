@@ -22,7 +22,7 @@ app.listen(config.port, () => debug(`listening on port ${config.port}`))
 
 //定时跑批量
 console.log('开始跑批量调度了');
-
+// noticeCenter.noticeUser();
 var composite = [
   { h: [20], m: [30] }
 ];

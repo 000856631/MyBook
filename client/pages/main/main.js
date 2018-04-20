@@ -27,6 +27,11 @@ Page({
         var app = getApp();//取得全局App({..})实例
         var userInfo = app.globalData.userInfo;//取得全局变量需要的值
         console.log('获取的openId' + userInfo.openId);
+        if (userInfo.openId ===undefined)
+        {
+          util.showModel('无法获取到用户身份标识，请重新打开小程序');
+          return;
+        }
         var options = {
           url: config.service.bookInfoUrl,
           data:{

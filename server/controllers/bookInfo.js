@@ -27,9 +27,9 @@ module.exports = async ctx => {
   mysql('bookInfo').insert({ isbnNum: isbnCode, openid: openId, nickName: nickName, headImageUrl: headImageUrl , bookLogoUrl: response.image, bookName: response.title, authorName: response.author[0], content:response.summary}).returning('*').then(res => {
     console.log(res)
   });
-  mysql('bookDetail').insert({ isbnNum: isbnCode, openid: openId, nickName: nickName, headImageUrl: headImageUrl, bookLogoUrl: response.image, bookName: response.title, authorName: response.author[0], content: response.summary }).returning('*').then(res => {
-    console.log(res)
-  });
+  // mysql('bookDetail').insert({ isbnNum: isbnCode, openid: openId, nickName: nickName, headImageUrl: headImageUrl, bookLogoUrl: response.image, bookName: response.title, authorName: response.author[0], content: response.summary }).returning('*').then(res => {
+  //   console.log(res)
+  // });
   //插入书籍 的详细关系，以isbnCode为主键
   ctx.state.data = response;
 
