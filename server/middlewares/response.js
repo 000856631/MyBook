@@ -1,5 +1,5 @@
 const debug = require('debug')('koa-weapp-demo')
-
+const fs = require('fs');
 /**
  * 响应处理模块
  */
@@ -15,6 +15,11 @@ module.exports = async function (ctx, next) {
             code: ctx.state.code !== undefined ? ctx.state.code : 0,
             data: ctx.state.data !== undefined ? ctx.state.data : {}
         }
+      //这一步没有权限失败了，估计服务器不允许这么干吧
+        // var htmStr = fs.createReadStream('./baby.html');
+        // console.log('htmlStr ='+htmStr);
+        // ctx.body = '<a href="./baby.html">Index Page</a>';
+        
     } catch (e) {
         // catch 住全局的错误信息
         debug('Catch Error: %o', e)

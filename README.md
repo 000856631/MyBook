@@ -446,3 +446,17 @@ this.learn = function( sr ) {
 }
 // Hard('jack1').rest(3).learn('chinese2');
 Hard('jack1').restFirst(5).learn('chinese');
+
+解决调小bug，显示按钮白色
+
+开发一个以书会友的功能。
+开发一个关于作者的功能，留下联系方式。
+开发一个星辰大海的动画
+
+Velocity 和 jQuery.animate 的工作方式类似，也是用来实现 JavaScript 动画的一个很棒的选择
+引入Tweenmax.js文件,也是实现动画的好东东
+<script src = “https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js” > </ script> 
+学会了用火狐调试前端界面了，可以看到console.log的信息，也能通过命令行修改里面的元素
+在线学习前端的好网站 http://jsfiddle.net/boilerplate/vue
+
+纠结vue究竟有没有触摸事件？
