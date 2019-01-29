@@ -9,9 +9,9 @@ const later = require('./my_modules/later');
 const noticeCenter = require('./batchHandle/noticeCenter');
 const koastatic = require('koa-static');
 
-app.use(koastatic(__dirname + '/VueCli'))
+
 //使用响应处理中间件
-// app.use(response)
+app.use(response)
 
 // 解析请求体
 app.use(bodyParser())
@@ -19,7 +19,7 @@ app.use(bodyParser())
 // 引入路由分发
 const router = require('./routes')
 app.use(router.routes())
-
+app.use(koastatic(__dirname + '/VueCli'))
 // 启动程序，监听端口
 app.listen(config.port, () => debug(`listening on port ${config.port}`))
 
