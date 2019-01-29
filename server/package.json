@@ -16,13 +16,14 @@
         "koa": "^2.0.0",
         "koa-bodyparser": "^3.2.0",
         "koa-log4": "^2.1.0",
+        "koa-request": "*",
         "koa-router": "^7.0.1",
-        "koa-request":"*",
-        "urllib":"^2.13.1",
+        "koa-static": "^5.0.0",
         "lodash": "^4.17.4",
         "mkdir-p": "0.0.7",
         "mysql": "^2.14.1",
         "pify": "^2.3.0",
+        "urllib": "^2.13.1",
         "wafer-node-sdk": "^1.0.7"
     },
     "devDependencies": {

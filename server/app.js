@@ -7,8 +7,11 @@ const bodyParser = require('koa-bodyparser')
 const config = require('./config')
 const later = require('./my_modules/later');
 const noticeCenter = require('./batchHandle/noticeCenter');
+const koastatic = require('koa-static');
+
+app.use(koastatic(__dirname + '/VueCli'))
 //使用响应处理中间件
-app.use(response)
+// app.use(response)
 
 // 解析请求体
 app.use(bodyParser())
