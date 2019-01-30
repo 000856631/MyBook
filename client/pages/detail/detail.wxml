@@ -1,5 +1,5 @@
     <view class="toolbar2">
-     <image class="item" mode='aspectFill' src='../../imageSource/bookMaster/闹钟.png ' ></image>  
+     <image class="item" mode='aspectFill' src='../../imageSource/bookMaster/clock.png ' ></image>  
     </view>
         <view class="toolbar">
         <form report-submit="YES" bindsubmit="formSubmit" bindreset="formReset"><button class='item' formType='submit'>    </button>  </form>

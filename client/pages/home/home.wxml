@@ -5,7 +5,7 @@
 
 
     <view class="toolbar2">
-     <image class="item" mode='aspectFill' src='../../imageSource/bookMaster/分享.png ' ></image>  
+     <image class="item" mode='aspectFill' src='../../imageSource/bookMaster/share.png ' ></image>  
     </view>
     <view class="toolbar">
      <button class='item' open-type='share'>    </button>  

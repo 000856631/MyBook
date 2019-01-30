@@ -1,6 +1,6 @@
 {
-	"client": "./client",
-	"svr": "./server",
+	"client": "client/",
+	"svr": "server/",
 	"appid": "wxdfb69c89ef6d53ed",
 	"projectname": "%E5%9B%BE%E4%B9%A6%E6%89%AB%E6%8F%8F%E5%A4%A7%E5%B8%88",
 	"setting": {

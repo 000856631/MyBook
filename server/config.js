@@ -21,7 +21,7 @@ const CONF = {
         port: 3306,
         user: 'root',
         db: 'cAuth',
-        // pass: 'wxdfb69c89ef6d53ed',测试环境
+        //pass: 'wxdfb69c89ef6d53ed',//测试环境
         pass:'3Gi9E1Rg', //生产环境
         char: 'utf8mb4'
     },
