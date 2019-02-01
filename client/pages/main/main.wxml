@@ -19,13 +19,22 @@
         </navigator>
         <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" bindtap="runScanCode">
           <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-            <image class="weui-media-box__thumb" src="../../imageSource/book.jpg" />
+            <image class="weui-media-box__thumb" src="../../imageSource/qrcode.png" />
           </view>
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
             <view class="weui-media-box__title">扫图书</view>
             <view class="weui-media-box__desc">对准图书背后的ISBN码吧</view>
           </view>
         </view>
+        <navigator url="../recomend/recomend" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="../../imageSource/book.jpg" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">年度推荐</view>
+            <view class="weui-media-box__desc">推荐的书籍，都会记录在这里</view>
+          </view>
+        </navigator>
       </view>
     </view>
   </view>

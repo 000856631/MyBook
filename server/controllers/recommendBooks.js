@@ -87,7 +87,7 @@ async function zhihuShowResult(body) {
   console.log('pathArray.length: ' + pathArray.length);
   var i = 0;
   (function () {
-    if (i >= 5) return;
+    if (i >= 25) return;
     doubanSecondRequest(pathArray[i]);
     setTimeout(arguments.callee, 100);
     i++;
