@@ -1,0 +1,433 @@
+<import name='reader_fenlei_component_searchbar' src='./component/Component_SearchBar.ux'></import>
+<import name="verticallist" src="./component/c_verticallist"></import>
+<template>
+  <div class="mallClassification-content" style="height:{{screenHeight}}px">
+    <div class="mallClassification-wrap">
+      <reader_fenlei_component_searchbar url="Page_RecentSearch" placeholder={{placeholder}} searchbar="{{searchbar}}"></reader_fenlei_component_searchbar>
+    </div>
+    <div>
+      <div class="mallClassification-left" style="height:{{screenHeight}}px">
+        <div class="verticaltab-content">
+          <list>
+            <list-item for="{{tabArray}}" type="tab-item">
+              <text onclick="detail($idx)" class="{{clickIndex===$idx?'verticaltab-active':'verticaltab-text'}}">{{$item.title}}</text>
+            </list-item>
+          </list>
+        </div>
+      </div>
+      <div else class="mallClassification-right">
+        <verticallist list="{{contentArray[clickIndex]}}" arrow="{{arrow}}"></verticallist>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+  .mallClassification-content {
+    width: 750px;
+    background-color: #ffffff;
+    flex-direction: column;
+  }
+
+  .mallClassification-wrap {
+    width: 683px;
+    margin: 17px 34px 36px 34px;
+  }
+
+  .mallClassification-left {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  .verticaltab-content {
+    width: 151px;
+    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .verticaltab-text {
+    padding-top: 35px;
+    padding-bottom: 30px;
+    color: #4A4A4A;
+    font-size: 27.1px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .verticaltab-active {
+    padding-top: 35px;
+    padding-bottom: 30px;
+    color: #CD2325;
+    font-size: 27.1px;
+    width: 100%;
+    background-color: #ffffff;
+    text-align: center;
+  }
+
+  .mallClassification-right {
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .mallClassification-title {
+    margin: 53px 0px 0px 33.3px;
+    color: #1A1A1A;
+    font-size: 27.1px;
+  }
+
+  .mallClassification-box {
+    flex-direction: column;
+  }
+</style>
+
+<script>
+  import device from '@system.device';
+  module.exports = {
+    data: {
+      //搜索框数据
+      searchbar: "img/c_search_search.png",
+      arrow: "img/arrow.png",
+      placeholder:'设计中的设计',
+      screenHeight: 0,
+      tabArray: [{
+        'title': '出版',
+        'select': true
+      },
+      {
+        'title': '男频',
+        'select': false
+      },
+      {
+        'title': '女频',
+        'select': false
+      },
+      {
+        'title': '漫画',
+        'select': false
+      },
+      {
+        'title': '杂志',
+        'select': false
+      },
+      {
+        'title': '听书',
+        'select': false
+      }
+      ],
+      defaultIndex: 0,
+      clickIndex: 0,
+      //根据不同的tab传入不同的值
+      contentArray: [
+        //出版
+        {
+          type: '出版',
+          siyecaoData: [
+            {
+              title: "推理悬疑",
+              backgroundImage: "TO_DELETE/siyecao/1.png",
+              url: "/Page_Novelclassify"
+            },
+            {
+              title: "纪实文学",
+              backgroundImage: "TO_DELETE/siyecao/2.png",
+              url: "/Page_Novelclassify"
+            },
+            {
+              title: "中国通史",
+              backgroundImage: "TO_DELETE/siyecao/3.png",
+              url: "/Page_Novelclassify"
+            },
+            {
+              title: "经济管理",
+              backgroundImage: "TO_DELETE/siyecao/4.png",
+              url: "/Page_Novelclassify"
+            }
+          ],
+          list: [
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '历史',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '社科',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '计算',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '掌阅公版',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '心里',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '励志',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '国学',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '旅游',
+            }
+          ],
+          chubanshelist: [
+            "TO_DELETE/cbs/cbs1.png",
+            "TO_DELETE/cbs/cbs2.png",
+            "TO_DELETE/cbs/cbs1.png",
+            "TO_DELETE/cbs/cbs2.png",
+            "TO_DELETE/cbs/cbs1.png",
+            "TO_DELETE/cbs/cbs2.png",
+          ]
+        },
+        //男频
+        {
+          type: '男频',
+          siyecaoData: [
+            {
+              title: "推理悬疑",
+              backgroundImage: "TO_DELETE/siyecao/1.png",
+              url: "/Page_Novelclassify"
+            },
+            {
+              title: "纪实文学",
+              backgroundImage: "TO_DELETE/siyecao/2.png",
+              url: "/Page_Novelclassify"
+            },
+            {
+              title: "中国通史",
+              backgroundImage: "TO_DELETE/siyecao/3.png",
+              url: "/Page_Novelclassify"
+            },
+            {
+              title: "经济管理",
+              backgroundImage: "TO_DELETE/siyecao/4.png",
+              url: "/Page_Novelclassify"
+            }
+          ],
+          list: [
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '武侠',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '玄幻',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '游戏',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '军事',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '灵异',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '励志',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '盗墓',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '科幻',
+            }
+          ]
+        },
+        //女频
+        {
+          type: '女频',
+          list: [
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '言情',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '宫斗',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '都市',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '霸道总裁',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '甜宠小文',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '职场女性',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '心灵鸡汤',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '美食',
+            }
+          ]
+        },
+        //漫画
+        {
+          type: '漫画',
+          list: [
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '热血',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '国漫',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '龙珠',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '火影',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '海贼王',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: 'JOJO',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '日漫',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '暴漫',
+            }
+          ]
+        },
+        //杂志
+        {
+          type: '杂志',
+          list: [
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '文摘',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '读者',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '意林',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '课堂内外',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: 'NBA',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '商业',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '娱乐',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '奇幻',
+            }
+          ]
+        },
+        //听书
+        {
+          type: '听书',
+          list: [
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '相声',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '评书',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '有声小说',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '名师讲解',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: 'NBA新闻',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '商业演讲',
+            },
+            {
+              uri: 'TO_DELETE/list/1.png',
+              title: '娱乐咨询',
+            },
+            {
+              uri: 'TO_DELETE/list/2.png',
+              title: '天天广播',
+            }
+          ]
+        }
+      ]
+    },
+    //初始化
+    onInit: function () {
+      this.$page.setTitleBar({
+        //titlebar的状态在manifest.json中display设置的
+       textColor: '#1a1a1a',
+        backgroundColor: 'rgba(242,242,242,0.95)',
+        text: '分类',
+        menu: true
+      });
+
+      let that = this;
+      device.getInfo({
+        success: function (ret) {
+          let height = ret.screenHeight;
+          that.screenHeight = height;
+        }
+      })
+
+    },
+
+    detail: function (index) {
+
+      if (index === 0) {
+        this.clickIndex = this.defaultIndex;
+      } else {
+        this.clickIndex = index;
+      }
+    }
+  }
+</script>

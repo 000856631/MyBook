@@ -1,0 +1,105 @@
+<template>
+  <!-- 新闻三叶草组件 -->
+  <!-- template里只能有一个根节点 -->
+  <div class="three_items" onclick="rediect">
+    <div class="three_item_title">
+      <text class="font">{{title}}</text>
+    </div>
+    <div class="three_item_imgs">
+      <block for="{{imglist}}">
+        <image class="three_imgs" src="{{$item.src}}"></image>
+      </block>
+    </div>
+    <div class="three_items_foot">
+      <text class="foot_font margin_right">{{footword}}</text>
+      <text class="foot_font font_color">{{footsource}}</text>
+    </div>
+
+  </div>
+</template>
+
+<style>
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  /* 页面总宽度750px,左右还有33px的margin，所以组件宽度未684px; */
+
+  .three_items {
+    width: 684px;
+    height: 300px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .three_imgs {
+    width: 222px;
+    height: 150px;
+  }
+
+  .three_item_title {
+    width: 100%;
+  }
+
+  .font {
+    color: #000000;
+    font-size: 35.4px;
+  }
+
+  .three_item_imgs {
+    width: 100%;
+    height: 160px;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    justify-content: space-between;
+  }
+
+  .three_items_foot {
+    width: 100%;
+    height: 40px;
+  }
+
+  .foot_font {
+    font-size: 24px;
+    color: #a2a2a2;
+  }
+
+  .margin_right {
+    margin-right: 33px;
+  }
+
+  .font_color {
+    color: #a2a2a2;
+  }
+</style>
+
+<script>
+  import router from '@system.router';
+
+  /*
+    参数说明：
+    url：新闻三叶草点击之后，跳转的页面url
+    title：三叶草新闻title
+    imglist：三叶草图片路径数组，要注意图拍的路径，示例： Array({src:"xxx/xxxx.png"})
+    footword:三叶草底部文字1
+    footsource:三叶草底部文字2
+   */
+  export default {
+    props: [
+      'url',
+      'title',
+      'imglist',
+      'footword',
+      'footsource'
+    ],
+    onInit: function () {
+    },
+    rediect() {
+      router.push({ uri: this.url });
+    }
+
+  }
+</script>

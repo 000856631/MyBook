@@ -1,0 +1,137 @@
+{
+  "package": "com.samel.fastbook",
+  "name": "fastBook",
+  "versionName": "1.0.1",
+  "versionCode": 1,
+  "icon": "/Common/logo.png",
+  "minPlatformVersion": 1000,
+  "features": [
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.device"
+    },
+    {
+      "name": "system.audio"
+    },
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.image"
+    },
+    {
+      "name": "system.fetch"
+    },
+    {
+      "name": "system.storage"
+    },
+    {
+      "name": "system.shortcut"
+    },
+    {
+      "name": "system.barcode"
+    }
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "config": {},
+  "router": {
+    "entry": "Page_MyMain",
+    "pages": {
+      "Page_Main": {
+        "component": "index",
+        "path": "/Page_Main"
+      },
+      "Page_Shujia": {
+        "component": "index",
+        "path": "/Page_Shujia"
+      },
+      "Page_Shucheng": {
+        "component": "index",
+        "path": "/Page_Shucheng"
+      },
+      "Page_Fenlei": {
+        "component": "index",
+        "path": "/Page_Fenlei"
+      },
+      "Page_Paihang": {
+        "component": "index",
+        "path": "/Page_Paihang"
+      },
+      "Page_Mine": {
+        "component": "index",
+        "path": "/Page_Mine"
+      },
+      "Page_Novelclassify": {
+        "component": "index",
+        "path": "/Page_Novelclassify"
+      },
+      "Page_Bookdetails": {
+        "component": "index",
+        "path": "/Page_Bookdetails"
+      },
+      "Page_Charge": {
+        "component": "index",
+        "path": "/Page_Charge"
+      },
+      "Page_Catalogue": {
+        "component": "index",
+        "path": "/Page_Catalogue"
+      },
+      "Page_Search": {
+        "component": "index",
+        "path": "/Page_Search"
+      },
+      "Page_Read": {
+        "component": "index",
+        "path": "/Page_Read"
+      },
+      "Page_Hearingdetail": {
+        "component": "index",
+        "path": "/Page_Hearingdetail"
+      },
+      "Page_Tingshu": {
+        "component": "index",
+        "path": "/Page_Tingshu"
+      },
+      "Page_About": {
+        "component": "index",
+        "path": "/Page_About"
+      },
+      "Page_In_Build": {
+        "component": "index",
+        "path": "/Page_In_Build"
+      },
+      "Page_Notice": {
+        "component": "index",
+        "path": "/Page_Notice"
+      },
+      "Page_Activity": {
+        "component": "index",
+        "path": "/Page_Activity"
+      },
+      "Page_MyMain": {
+        "component": "Page_MyMain",
+        "path": "/Page_MyMain"
+      },
+      "Page_QRCode": {
+        "component": "Page_QRCode",
+        "path": "/Page_QRCode"
+      }
+    }
+  },
+  "display": {
+    "titleBarBackgroundColor": "#fff8dc",
+    "pages": {
+      "Page_Search": {
+        "titleBar": false
+      }
+    }
+  },
+  "debugable": true
+}

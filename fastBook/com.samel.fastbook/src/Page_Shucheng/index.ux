@@ -1,0 +1,228 @@
+<import name='reader_shucheng_component_searchbar' src='./component/Component_SearchBar.ux'></import>
+<import name='component_swiper' src='./component/component_swiper.ux'></import>
+<import name="fastentry" src="./component/c_fastEntry"></import>
+<import name='multi' src='./component/c_list_multi'></import>
+<import name='swi' src='./component/c_item_container_swiper'></import>
+<import name='single' src='./component/c_list_single'></import>
+<import name='recommandlist' src='./component/c_recommandList'></import>
+
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="shucheng-box">
+
+
+    <!-- 为你推荐 -->
+    <div class="shucheng-box-five">
+      <multi banner="{{banner2}}" list="{{data2}}" num="{{3}}"></multi>
+    </div>
+
+  </div>
+</template>
+
+<style>
+  .shucheng-box {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color:#fff8dc;
+  }
+
+  .shucheng-box-one {
+    width: 683px;
+    margin: 17px 34px 36px 34px;
+  }
+
+  .shucheng-box-four {
+    margin-top: 50px;
+  }
+
+  .shucheng-box-five {
+    margin-top: 50px;
+  }
+
+  .shucheng-box-six {
+    margin-top: 50px;
+  }
+
+  .shucheng-box-seven {
+    margin-top: 50px;
+  }
+
+  .shucheng-box-eight {
+    margin-top: 50px;
+  }
+
+  .maintab-shadow-bottom {
+    width: 100%;
+  }
+</style>
+
+<script>
+  import fetch from '@system.fetch'
+  import prompt from '@system.prompt'
+  import storage from "@system.storage"
+  let baidu = 'https://www.baidu.com';
+  module.exports = {
+    props: [],
+    data: {
+      //搜索框数据
+      searchbar: "img/c_search_search.png",
+      //轮播图
+      swiperdata:
+        [
+          { src: "TO_DELETE/banner/banner1.png" },
+          { src: "TO_DELETE/banner/banner1.png" },
+          { src: "TO_DELETE/banner/banner1.png" }
+        ],
+
+      //快捷入口数据
+      fastentrylist:
+        [{
+          'icon': 'img/dushi.png',
+          'title': '都市',
+          'src': 'city',
+          'isNew': false
+        },
+        {
+          'icon': 'img/paihang.png',
+          'title': '排行',
+          'src': 'paihang',
+          'isNew': false
+        },
+        {
+          'icon': 'img/tejia.png',
+          'title': '特价',
+          'src': 'tejia',
+          'isNew': false
+        },
+        {
+          'icon': 'img/mianfei.png',
+          'title': '免费',
+          'src': 'free',
+          'isNew': true
+        }
+        ],
+
+      //每日一书
+      everydayonebook:
+        {
+          title: "每日一书",
+          subtitle: "更多",
+          arrow: "img/arrow.png",
+          list: [
+            {
+              uri: 'TO_DELETE/everydayBook/everybook.png',
+              title: '寄余生任我江海',
+              brief: '结婚仿佛金漆的笼子，笼子外面的鸟想住进去，笼内的鸟想飞出来',
+              author: '孟康',
+              clazz: ['古典爱情', '文学']
+            }
+          ]
+        },
+      //为你推荐
+      banner2:
+        {
+          title: '您的书架'
+
+        },
+      data2:
+        [],
+
+      //根据你读过的书推荐
+      listbyyouread:
+        {
+        },
+      //专题推荐
+      banner:
+        {
+          title: '专题推荐',
+          link: '更多',
+          uri: 'img/arrow.png'
+        },
+      subjectlist:
+        [{
+          img: 'TO_DELETE/banner/banner1.png'
+        },
+        {
+          img: 'TO_DELETE/banner/banner1.png'
+        },
+        {
+          img: 'TO_DELETE/banner/banner1.png'
+        }
+        ],
+      //榜单推荐
+      recommendlist:
+        {
+          // 榜单排行recommandList入参：
+        },
+      //限时特价
+      banner3:
+        {
+
+        },
+      data3:
+        [
+        ]
+    },
+
+    onInit() {
+      this.$page.setTitleBar({
+        //titlebar的状态，在manifest.json中display设置的
+        text: '图书扫描大师',
+        textColor: '##1A1A1A',
+        backgroundColor: 'rgba(242,242,242,0.95)',
+        menu: false
+      });
+      
+    },
+    onShow: function () {
+       this.getBookDataList(); 
+    },
+    getBookDataList: function () {
+
+      console.log("senduserid" + this.senduserid);
+      var that = this;
+
+      var url = "https://364364774.rickybook.club/weapp/bookArray?openId=" + that.senduserid;
+      console.log(" 请求的url" + url);
+      fetch.fetch({
+        url: url,
+        success: function (ret) {
+          // 注意that.fetchData与ret接收的数据类型保持一致
+          // console.log("response" + JSON.stringify(ret.data));
+          var responsejson = JSON.parse(ret.data);
+
+          // console.log("data2" + data2);
+          var list = responsejson.data.bookArray;
+          that.data2 = list;
+          for (var item in list) {
+            console.log('item Value', list[item]);
+            storage.set({
+              key: list[item].isbnNum,
+              value: list[item],
+              success: function (data) { 
+                console.log("handling  booklist success");
+                 },
+              fail: function (data, code) {
+                console.log("handling fail, code=" + code);
+              }
+            });
+          }
+
+        },
+        fail: function (msg, code) {
+          console.log(msg, code);
+        },
+        complete: function () {
+          console.log("complete");
+        }
+      });
+      console.log("handling success");
+
+
+
+
+    }
+  }
+</script>

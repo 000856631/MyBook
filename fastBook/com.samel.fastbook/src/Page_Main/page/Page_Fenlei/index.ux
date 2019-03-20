@@ -1,0 +1,150 @@
+<import name='reader_main_component_searchbar' src='./component/Component_SearchBar.ux'></import>
+<import name="verticallist" src="./component/p_novel_list"></import>
+
+<template>
+  <div class="mallClassification-content" style="height:{{screenHeight}}px">
+    <div class="mallClassification-wrap">
+      <reader_main_component_searchbar url="Page_RecentSearch" placeholder={{placeholder}} searchbar="{{searchbar}}"></reader_main_component_searchbar>
+    </div>
+    <div>
+      <div class="mallClassification-left" style="height:{{screenHeight}}px">
+        <div class="verticaltab-content">
+          <list>
+            <list-item for="{{tabArray}}" type="title-item">
+              <text onclick="detail($idx)" class="{{clickIndex===$idx?'verticaltab-active':'verticaltab-text'}}">{{$item.title}}</text>
+            </list-item>
+          </list>
+        </div>
+      </div>
+      <div else class="mallClassification-right">
+        <verticallist list="{{novelList}}"></verticallist>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+  .mallClassification-content {
+    width: 750px;
+    background-color: #ffffff;
+    flex-direction: column;
+  }
+
+  .mallClassification-wrap {
+    width: 683px;
+    margin: 17px 34px 36px 34px;
+  }
+
+  .mallClassification-left {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  .verticaltab-content {
+    width: 151px;
+    margin-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .verticaltab-text {
+    padding-top: 35px;
+    padding-bottom: 30px;
+    color: #4A4A4A;
+    font-size: 27.1px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .verticaltab-active {
+    padding-top: 35px;
+    padding-bottom: 30px;
+    color: #CD2325;
+    font-size: 27.1px;
+    width: 100%;
+    background-color: #ffffff;
+    text-align: center;
+  }
+
+  .mallClassification-right {
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .mallClassification-title {
+    margin: 53px 0px 0px 33.3px;
+    color: #1A1A1A;
+    font-size: 27.1px;
+  }
+
+  .mallClassification-box {
+    flex-direction: column;
+  }
+</style>
+
+<script>
+  import device from '@system.device';
+  module.exports = {
+    data: {
+      //搜索框数据
+      searchbar: "./page/Page_Fenlei/img/c_search_search.png",
+      arrow: "./page/Page_Fenlei/img/arrow.png",
+      placeholder: '设计中的设计',
+      screenHeight: 0,
+      tabArray: [{
+        'title': '历史',
+        'select': true
+      },
+      {
+        'title': '心理',
+        'select': false
+      },
+      {
+        'title': '社科',
+        'select': false
+      },
+      {
+        'title': '励志',
+        'select': false
+      },
+      {
+        'title': '计算',
+        'select': false
+      },
+      {
+        'title': '国学',
+        'select': false
+      }
+      ],
+      clickIndex: 0,
+      novelList: [
+        { image: './page/Page_Fenlei/TO_DELETE/list/read1.png', title: '这个大神有点痞', presentation: '我们这个家，很朴素；我们三个人，很单纯。我们与世无求，与人无争，只求相聚在一起，相守在一起，各自做力所能及的事。碰到困难，我们一同承担，困难就不复困难；我们相伴相助，不论什么苦涩艰辛的事，都能变得甜润。我们稍有一点快乐，也会变得非常快乐。', author: '村上春树', novelType: '文学', evaluation: '4.1' },
+        { image: './page/Page_Fenlei/TO_DELETE/list/p_word.png', title: '谁的青春不疯狂', presentation: '我们这个家，很朴素；我们三个人，很单纯。我们与世无求，与人无争，只求相聚在一起，相守在一起，各自做力所能及的事。碰到困难，我们一同承担，困难就不复困难；我们相伴相助，不论什么苦涩艰辛的事，都能变得甜润。我们稍有一点快乐，也会变得非常快乐。', author: '青春陌生', novelType: '青春', evaluation: '5.1' },
+        { image: './page/Page_Fenlei/TO_DELETE/list/p_arc_of_war.png', title: '我的晃荡的青春', presentation: '我们这个家，很朴素；我们三个人，很单纯。我们与世无求，与人无争，只求相聚在一起，相守在一起，各自做力所能及的事。碰到困难，我们一同承担，困难就不复困难；我们相伴相助，不论什么苦涩艰辛的事，都能变得甜润。我们稍有一点快乐，也会变得非常快乐。', author: '秋风雨', novelType: '玄幻修仙', evaluation: '4.0' },
+        { image: './page/Page_Fenlei/TO_DELETE/list/read1.png', title: '我的晃荡的青春', presentation: '我们这个家，很朴素；我们三个人，很单纯。我们与世无求，与人无争，只求相聚在一起，相守在一起，各自做力所能及的事。碰到困难，我们一同承担，困难就不复困难；我们相伴相助，不论什么苦涩艰辛的事，都能变得甜润。我们稍有一点快乐，也会变得非常快乐。', author: '秋风雨', novelType: '玄幻修仙', evaluation: '4.1' },
+        { image: './page/Page_Fenlei/TO_DELETE/list/p_word.png', title: '我的晃荡的青春', presentation: '我们这个家，很朴素；我们三个人，很单纯。我们与世无求，与人无争，只求相聚在一起，相守在一起，各自做力所能及的事。碰到困难，我们一同承担，困难就不复困难；我们相伴相助，不论什么苦涩艰辛的事，都能变得甜润。我们稍有一点快乐，也会变得非常快乐。', author: '秋风雨', novelType: '玄幻修仙', evaluation: '4.3' }
+      ]
+
+    },
+    //初始化
+    onInit: function () {
+      this.$page.setTitleBar({
+        //titlebar的状态在manifest.json中display设置的
+        menu: false
+      });
+
+      let that = this;
+      device.getInfo({
+        success: function (ret) {
+          let height = ret.screenHeight;
+          that.screenHeight = height;
+        }
+      })
+
+    },
+
+    detail: function (index) {
+      this.clickIndex = index;
+    }
+  }
+</script>

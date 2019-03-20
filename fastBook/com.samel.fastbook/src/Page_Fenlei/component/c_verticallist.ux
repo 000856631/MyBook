@@ -1,0 +1,52 @@
+<import name="siyecao" src="./c_siyecao"></import>
+<import name="listsingleclass" src="./c_list_single_class"></import>
+<import name="shubanshe" src="./c_chubanshe"></import>
+
+<template>
+  <!-- 搜索栏组件 -->
+  <div class="container">
+    <list>
+      <list-item type="content-item">
+        <siyecao if="{{list.siyecaoData}}" list="{{list.siyecaoData}}"></siyecao>
+      </list-item>
+      <list-item type="content-item">
+        <listsingleclass list="{{list.list}}"></listsingleclass>
+      </list-item>
+      <list-item type="content-item">
+        <shubanshe if="{{list.chubanshelist}}" list="{{list.chubanshelist}}" arrow="{{arrow}}"></shubanshe>
+      </list-item>
+    </list>
+  </div>
+</template>
+
+<style>
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+</style>
+
+<script>
+  import router from '@system.router';
+
+  export default {
+    props: [
+      'list',
+      'arrow'
+    ],
+    data: {
+
+    },
+    onInit: function () {
+      if (!this.placeholder) {
+        this.placeholder = "设计中的设计";
+      }
+    },
+    rediect() {
+      router.push({ uri: this.url });
+    }
+
+  }
+</script>

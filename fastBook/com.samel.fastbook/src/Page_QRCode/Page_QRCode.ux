@@ -1,0 +1,87 @@
+<template>
+  <div class="container">
+    <div class="page-title-wrap">
+      <text class="page-title">{{componentName}}</text>
+    </div>
+    <div class="item-container">
+      <div class="item-content">
+        <text class="txt">二维码扫描数据:{{qrCodeData}}</text>
+      </div>
+      <input type="button" class="btn" onclick="qrCode" value="打开二维码扫描" />
+    </div>
+  </div>
+</template>
+
+<style>
+  /* @import '../Common/css/common.css'; */
+
+  .item-container {
+    margin-bottom: 50px;
+    margin-right: 60px;
+    margin-left: 60px;
+    flex-direction: column;
+  }
+
+  .item-content {
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 30px;
+    margin-bottom: 100px;
+    align-items: flex-start;
+  }
+</style>
+
+<script>
+  import barcode from '@system.barcode'
+  import fetch from '@system.fetch'
+  import prompt from '@system.prompt'
+  export default {
+    data: {
+      componentName: 'qrcode',
+      qrCodeData: '',
+    },
+    onInit: function () {
+      this.$page.setTitleBar({ text: 'qrcode' })
+    },
+    qrCode: function () {
+      var that = this;
+      barcode.scan({
+        success: function (ret) {
+          that.qrCodeData = ret.result;
+          var url = "https://364364774.rickybook.club/weapp/bookInfo?openId=oXPkg0UpQMVx3EVp4WfKSHcx4LDc&isbnCode=" + ret.result;
+          console.log(" 请求的url" + url);
+          fetch.fetch({
+            url: url,
+            success: function (ret) {
+              // 注意that.fetchData与ret接收的数据类型保持一致
+              // console.log("response" + JSON.stringify(ret.data));
+
+              console.log("ret" + JSON.stringify(ret.data));
+              var responsejson = JSON.parse(ret.data);
+              var bookname = responsejson.data.title;
+              prompt.showToast({
+                message: '添加书籍成功：'+bookname
+               });
+            },
+            fail: function (msg, code) {
+              console.log(msg, code);
+            },
+            complete: function () {
+              console.log("complete");
+            }
+          });
+        },
+        fail: function (erromsg, errocode) {
+          that.qrCodeData = errocode + ': ' + erromsg;
+        },
+        cancel: function (erromsg, errocode) {
+          console.info('cancel--- ')
+        },
+        complete: function () {
+          console.info('complete  ')
+        }
+      })
+    }
+
+  }
+</script>

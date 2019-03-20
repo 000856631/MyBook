@@ -1,0 +1,377 @@
+<!-- 
+    依赖组件Component_News_Single
+           Component_News_Items
+ -->
+<import name="single" src="./component/c_news_single"></import>
+<import name="three" src="./component/c_news_items"></import>
+<template>
+  <!-- template里只能有一个根节点 -->
+  <div class="container">
+
+    <!-- 头部图片区域 -->
+
+
+    <!-- 文字区域 -->
+    <div class="head_text common_middle">
+      <div class="head_content">
+        <text class="head_font">{{title}}</text>
+      </div>
+      <div class="middle_content">
+        <text class="middle_content_text">{{content}}</text>
+      </div>
+    </div>
+
+    <!-- 单叶草区域 -->
+    <div class="single_regin common_middle">
+      <div class="single_regin_title">
+        <text class="common_font">{{hot}}</text>
+      </div>
+      <block for="{{singleOnes}}">
+        <single url="{{$item.url}}" title="{{$item.title}}" imgsrc="{{$item.imgsrc}}" params="{{$item.params}}" footword="{{$item.footword}}"></single>
+      </block>
+
+      <div class="single_regin_title">
+        <text class="common_font">{{head}}</text>
+      </div>
+      <block for="{{singleTwos}}">
+        <div class="news_single" onclick="qrCode">
+          <div class="news_single_content">
+            <div class="news_single_title">
+              <div class="head">
+                <text class="font">{{$item.title}}</text>
+              </div>
+              <div class="foot">
+                <!-- <text class="foot_font">{{$item.footword}}</text> -->
+                
+              </div>
+            </div>
+            <div class="news_single_img">
+              <image class="three_imgs" src="{{$item.imgsrc}}"></image>
+            </div>
+          </div>
+        </div>
+      </block>
+      <block for="{{singleThrees}}">
+        <stack class="stack">
+          <single url="{{$item.url}}" title="{{$item.title}}" imgsrc="{{$item.imgsrc}}" params="{{$item.params}}" footword="{{$item.footword}}"></single>
+          <!-- <div class="auto_time">
+          </div> -->
+          <text class="auto_time_text">{{$item.time}}</text>
+        </stack>
+      </block>
+    </div>
+
+    <!-- 底部区域 -->
+    <div class="foot">
+    </div>
+  </div>
+</template>
+
+<style>
+  .container {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+  }
+
+  .title {
+    font-size: 100px;
+  }
+
+  .head_image {
+    width: 750px;
+    height: 250px;
+  }
+
+  .head_text {
+    height: 320px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .single_regin {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .common_middle {
+    width: 684px;
+    margin-left: 33px;
+    margin-right: 33px;
+  }
+
+  .foot {
+    width: 750px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .head_content {
+    width: 100%;
+    margin-top: 33.3px;
+  }
+
+  .head_font {
+    font-weight: bold;
+    color: #1A1A1A;
+    font-size: 37.5px;
+  }
+
+  .middle_content {
+    width: 100%;
+    margin-top: 12.8px;
+  }
+
+  .middle_content_text {
+    line-height: 46px;
+    font-size: 27px;
+  }
+
+  .common_font {
+    color: #8c8c8c;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .head_text_lable {
+    width: 100%;
+    margin-top: 16.9px;
+  }
+
+  .foot_lable {
+    background-color: #f3f3f3;
+    color: #1a1a1a;
+    text-align: center;
+    margin-right: 16px;
+    width: 150px;
+    height: 50px;
+    font-size: 25px;
+    border-radius: 8px;
+  }
+
+  .single_regin_title {
+    width: 100%;
+    margin-top: 46px;
+    margin-bottom: 16px;
+  }
+
+  .single_item_1 {
+    width: 684px;
+    height: 198px;
+  }
+
+  .foot_div {
+    width: 240px;
+    height: 80px;
+    justify-content: space-around;
+  }
+
+  .foot_img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .auto_time {
+    width: 69px;
+    height: 33px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+    background-color: #000000;
+    opacity: 0.3;
+    border-radius: 4px;
+  }
+
+  .auto_time_text {
+    width: 69px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 35px;
+  }
+
+  .stack {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+    .container {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+
+  /* 页面总宽度750px,左右还有33px的margin，所以组件宽度未684px; */
+
+  .news_single {
+    width: 684px;
+    height: 199px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-bottom-color: #CDCDCD;
+    border-bottom-width: 0.5px;
+    padding-top: 26.6px;
+    padding-bottom: 26.6px;
+  }
+
+  .news_single_content {
+    width: 684px;
+  }
+
+  .news_single_title {
+    width: 434px;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 33.3px;
+  }
+
+  .head {
+    width: 425px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .foot {
+    width: 434px;
+    margin-top: 16.7px;
+  }
+
+  .news_single_img {
+    width: 222px;
+    height: 148px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .foot_font {
+    font-size: 25px;
+    color: #BABABA;
+  }
+
+  .margin_right {
+    margin-right: 20px;
+  }
+
+  .font_color {
+    color: #a2a2a2;
+  }
+
+  .three_imgs {
+    width: 150px;
+    height: 150px;
+  }
+
+  .font {
+    color: #1A1A1A;
+    font-size: 35px;
+  }
+</style>
+<script>
+  import barcode from '@system.barcode'
+  import fetch from '@system.fetch'
+  import prompt from '@system.prompt'
+  let openId = 'oXPkg0UpQMVx3EVp4WfKSHcx4LDc';
+  export default {
+    data: {
+      title: "图书扫描大师",
+      content: "扫描实体书背后的ISBN码，即可以管理您的线下书籍",
+      lableOne: "特朗普",
+      labelTwo: "美朝关系",
+      hot: "",
+      head: "",
+      singleOnes: [{
+        url: "/Page_Shucheng",
+        title: "我的书架",
+        imgsrc: "./to_delete/p_news_two_p1.jpg",
+        footword: "扫描过的书籍，都会记录在这里",
+        params: { senduserid: openId }
+      }],
+      singleTwos: [{
+        url: "/Page_Detail",
+        title: "扫图书",
+        imgsrc: "./to_delete/p_news_two_p2.png",
+        footword: "对准图书背后的ISBN码"
+      }],
+      singleThrees: [{
+        url: "/Page_Shucheng",
+        title: "年度推荐",
+        imgsrc: "./to_delete/p_news_two_p3.jpg",
+       
+        footword: "根据全网大数据人工智能推荐的阅读书单",
+        params: { senduserid: 'recommendBooks' }
+      }]
+    },
+    onInit: function () {
+      //TODO初始化 data中的数据
+      var storage = require("@system.storage");
+      storage.set({
+        key: 'openId',
+        value: openId,
+        success: function (data) { console.log("handling success"); },
+        fail: function (data, code) {
+          console.log("handling fail, code=" + code);
+        }
+      });
+
+    },
+    qrCode: function () {
+      var that = this;
+      barcode.scan({
+        success: function (ret) {
+
+          that.qrCodeData = ret.result;
+          console.log('ret.result:'+ret.result);
+          if (ret.result === '9789889955991') {
+            prompt.showToast({
+                message: '添加书籍成功：华为快AI的首应用.' + 'ISBN:9789889955991'
+              });
+            return;
+          }
+          var url = "https://364364774.rickybook.club/weapp/bookInfo?openId=" + openId + "&isbnCode=" + ret.result;
+          console.log(" 请求的url" + url);
+          fetch.fetch({
+            url: url,
+            success: function (ret) {
+              // 注意that.fetchData与ret接收的数据类型保持一致
+              // console.log("response" + JSON.stringify(ret.data));
+              // console.log()
+
+              console.log("ret" + JSON.stringify(ret.data));
+              var responsejson = JSON.parse(ret.data);
+              console.log('responsejson.code'+responsejson.code);
+              if(responsejson.code === '-1'){
+                  return;
+              }
+              var bookname = responsejson.data.title;
+              prompt.showToast({
+                message: '添加书籍成功：' + bookname
+              });
+            },
+            fail: function (msg, code) {
+              console.log(msg, code);
+            },
+            complete: function () {
+              console.log("complete");
+            }
+          });
+        },
+        fail: function (erromsg, errocode) {
+          that.qrCodeData = errocode + ': ' + erromsg;
+        },
+        cancel: function (erromsg, errocode) {
+          console.info('cancel--- ')
+        },
+        complete: function () {
+          console.info('complete  ')
+        }
+      })
+    }
+
+  }
+
+</script>
