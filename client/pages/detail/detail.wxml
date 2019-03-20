@@ -1,0 +1,30 @@
+    <view class="toolbar2">
+     <image class="item" mode='aspectFill' src='../../imageSource/bookMaster/clock.png ' ></image>  
+    </view>
+        <view class="toolbar">
+        <form report-submit="YES" bindsubmit="formSubmit" bindreset="formReset"><button class='item' formType='submit'>    </button>  </form>
+     
+    </view>
+<view style="min-height : {{screen.minHeight}};background-color: #4593D5;">
+  <view class="banner">
+    <view class="poster">
+      <image mode="aspectFit" src="{{movie.bookLogoUrl}}"></image>
+    </view>
+    <view class="info">
+      <!-- <view class="subinfo">{{movie.title}}</view> -->
+      <view>{{movie.aka[movie.aka.length - 1]}}</view>
+      <view class="score">{{movie.authorName}}
+        <view></view>
+      </view>
+      <view class="subinfo">
+        <view>{{movie.genresStr}}</view>
+        <view>{{movie.bookName}}</view>
+      </view>
+    </view>
+    <image class="background" mode="aspectFill" src="{{movie.bookLogoUrl}}"></image>
+  </view>
+  <view class="casts">
+    <view class="title">书籍简介:</view>
+    {{movie.content}}
+  </view>
+</view>
