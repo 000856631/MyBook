@@ -1,0 +1,22 @@
+{
+  "name": "net_grab",
+  "version": "1.0.0",
+  "description": "grab",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index"
+  },
+  "bin": {
+    "grab": "bin/grab.js"
+  },
+  "keywords": [
+    "webpage grab"
+  ],
+  "author": "Jeff Zhong",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "colors": "^1.1.2",
+    "commander": "^2.11.0"
+  }
+}
